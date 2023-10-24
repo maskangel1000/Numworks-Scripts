@@ -10,6 +10,7 @@ class Calculator:
   fps : int = 30
     the frames drawn to the screen per second
   """
+  
   width: int = 320
   height: int = 200
   fps: int = 30
@@ -28,12 +29,7 @@ class Image:
       If the image should be drawn in the next frame
   """
   
-  def __init__(self,
-      pixels: list[list[list[int]]],
-      x: int,
-      y: int,
-      is_drawing: bool = False
-      ):
+  def __init__(self, pixels: list[list[list[int]]], x: int, y: int, is_drawing: bool = False) -> None:
     """Constructs the Image object
 
     Parameters
@@ -66,6 +62,7 @@ class Image:
 
   def draw(self) -> None:
     """Draws the image to the screen if is_drawing is True"""
+    
     # Do not draw if is_drawing is False
     if not self.is_drawing:
       return
@@ -78,6 +75,7 @@ class Image:
 
   def center(self) -> None:
     """Moves the x and y of the image to the center of the screen"""
+    
     # Set x and y to center
     self.x = Calculator.width // 2 - self.width // 2
     self.y = Calculator.height // 2 - self.height // 2
@@ -91,10 +89,8 @@ class Screen:
     is_drawing : bool
       If the images should be drawn in the next frame
   """
-  def __init__(self,
-      images: list[Image] = [],
-      is_drawing: bool = False
-      ):
+  
+  def __init__(self, images: list[Image] = [], is_drawing: bool = False) -> None:
     """Constructs a Screen object
 
     Parameters
@@ -103,12 +99,14 @@ class Screen:
       is_drawing : bool = False
         If the images should be drawn in the next frame
     """
+    
     # Assign values
     self.images = images
     self.is_drawing = is_drawing
 
   def draw(self) -> None:
     """Draws the images to the screen if is_drawing is True"""
+    
     # Do not draw if is_drawing is False
     if not self.is_drawing:
       return
@@ -116,27 +114,25 @@ class Screen:
     for image in self.images:
       image.draw()
 
-  def add_image(self,
-      image: Image
-      ) -> None:
+  def add_image(self, image: Image) -> None:
     """Adds an Image object to the images array
 
     Parameters
       image
         The Image object to be added to the images array
     """
+    
     # Add image to images array
     self.images.append(image)
 
-  def remove_image(self,
-      image: Image
-      ) -> None:
+  def remove_image(self, image: Image) -> None:
     """Removes an Image object from the images array
 
     Parameters
       image
         The Image object to be removed from the images array
     """
+    
     # Check for image in images array
     for idx, img in enumerate(this.images):
       if img is image:
