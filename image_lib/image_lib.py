@@ -15,6 +15,23 @@ class Calculator:
   height: int = 200
   fps: int = 30
 
+  @staticmethod
+  def get_center_tuple() -> tuple(int, int):
+    """Returns a tuple (x, y) of the center of the calculator"""
+    
+    return (Calculator.width // 2, Calculator.height // 2)
+
+  @staticmethod
+  def get_center_x() -> int:
+    """Returns the x value of the center of the calculator"""
+    
+    return get_center_tuple()[0]
+
+  def get_center_y() -> int:
+    """Return the y value of the center of the calculator"""
+    
+    return get_center_tuple()[1]
+
 class Image:
   """A class to represent an image by an array of pixels
 
@@ -77,8 +94,20 @@ class Image:
     """Moves the x and y of the image to the center of the screen"""
     
     # Set x and y to center
-    self.x = Calculator.width // 2 - self.width // 2
-    self.y = Calculator.height // 2 - self.height // 2
+    self.x = Calculator.get_center_x() - self.width // 2
+    self.y = Calculator.get_center_y() - self.height // 2
+
+  def move_to(self, x: int, y: int) -> None:
+    """Sets the x and y of the image"""
+
+    self.x = x
+    self.y = y
+
+  def move_center_to(self, x: int, y: int) -> None:
+    """Sets the x and y of the center of the image"""
+
+    self.x = x - self.width // 2
+    self.y = y - self.height // 2
 
 class Screen:
   """A class to represent what is drawn to the screen
@@ -144,5 +173,5 @@ img1 = Image([[[0, 0, 0] for a in range(0, 10)] for b in range(0, 10)], 0, 0, Tr
 img1.center()
 print(img1.pixels)
 screen.add_image(img1)
-# while True:
-#   screen.draw()
+while True:
+  screen.draw()
