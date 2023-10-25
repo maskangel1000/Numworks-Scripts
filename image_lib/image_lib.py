@@ -27,6 +27,7 @@ class Calculator:
     
     return get_center_tuple()[0]
 
+  @staticmethod
   def get_center_y() -> int:
     """Return the y value of the center of the calculator"""
     
