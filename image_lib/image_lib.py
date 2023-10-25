@@ -71,7 +71,7 @@ class Image:
       for x in range(0, len(self.pixels[y])):
         print(x,y,self.pixels[y][x])
         pixel = kandinsky.color(self.pixels[y][x])
-        kandinsky.set_pixel(x, y, pixel)
+        kandinsky.set_pixel(x + self.x, y + self.y, pixel)
 
   def center(self) -> None:
     """Moves the x and y of the image to the center of the screen"""
