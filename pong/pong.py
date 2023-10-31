@@ -16,7 +16,8 @@ PONG_HEIGHT = 40
 BALL_WIDTH = 10
 BALL_HEIGHT = 10
 
-PIXELS_PER_FRAME = 3
+BALL_PIXELS_PER_FRAME = 7
+PONG_PIXELS_PER_FRAME = 5
 
 player_y = HEIGHT//2-PONG_HEIGHT//2
 comp_y = player_y
@@ -49,19 +50,19 @@ def draw_pongs():
   # Check movement
   if ion.keydown(ion.KEY_UP):
     if player_y >= 0:
-      player_y -= PIXELS_PER_FRAME
+      player_y -= PONG_PIXELS_PER_FRAME
   elif ion.keydown(ion.KEY_DOWN):
     if player_y + PONG_HEIGHT <= HEIGHT:
-      player_y += PIXELS_PER_FRAME
+      player_y += PONG_PIXELS_PER_FRAME
   
 def draw_ball():
   global ball_x, ball_y
   kandinsky.fill_rect(ball_x, ball_y, BALL_WIDTH, BALL_HEIGHT, BALL_COLOR)
   set_ball_direction()
   if ball_direction == "right":
-    ball_x += PIXELS_PER_FRAME
+    ball_x += BALL_PIXELS_PER_FRAME
   else:
-    ball_x -= PIXELS_PER_FRAME
+    ball_x -= BALL_PIXELS_PER_FRAME
 
 def draw():
   draw_background()
