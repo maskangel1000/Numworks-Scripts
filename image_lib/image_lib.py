@@ -5,7 +5,7 @@ class Calculator:
 
   width : int = 320
     the width of the calculator screen
-  height : int = 200
+  height : int = 222
     the height of the calculator screen
   fps : int = 30
     the frames drawn to the screen per second
