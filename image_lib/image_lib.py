@@ -113,7 +113,20 @@ class Image:
     self.y = Calculator.get_center_y() - self.height // 2
 
   def move_to(self, x: int, y: int) -> None:
-    """Sets the x and y of the image"""
+    """Sets the x and y of the image
+    
+    Parameters
+      x : int
+        The new top left x coordinate of the image
+      y : int
+        The new top left y coordinate of the image
+
+    Raises
+      TypeError
+        If the x value is not within 0 and Calculator width, inclusive
+      TypeError
+        If the y value is not within 0 and Calculator height, inclusive
+    """
 
     # Exception handling
 
@@ -129,7 +142,20 @@ class Image:
     self.y = y
 
   def move_center_to(self, x: int, y: int) -> None:
-    """Sets the x and y of the center of the image"""
+    """Sets the x and y of the center of the image
+    
+    Parameters
+      x : int
+        The new top left x coordinate of the image
+      y : int
+        The new top left y coordinate of the image
+
+    Raises
+      TypeError
+        If the x value is not within 0 and Calculator width, inclusive
+      TypeError
+        If the y value is not within 0 and Calculator height, inclusive
+    """
 
     # Exception handling
     
