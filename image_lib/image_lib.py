@@ -63,19 +63,33 @@ class Image:
     Raises
       TypeError
         If the image dimensions are not uniform
+      TypeError
+        If the x value is not within 0 and Calculator width, inclusive
+      TypeError
+        If the y value is not within 0 and Calculator height, inclusive
     """
         
     # Exception handling
+    
     row_length = len(pixels[0])
     for row in pixels:
       if len(row) != row_length:
         raise TypeError("Image dimensions must be uniform")
       row_length = len(row)
 
+    if x < 0 or x > Calculator.width:
+      raise TypeError("x value must be within calculator bounds")
+      
+    if y < 0 or y > Calculator.height:
+      raise TypeError("y value must be within calculator bounds")
+
     # Assign values
+    
     self.pixels = pixels
     self.width = len(pixels[0])
     self.height = len(pixels)
+    self.x = x
+    self.y = y
     self.is_drawing = is_drawing
 
   def draw(self) -> None:
@@ -101,12 +115,32 @@ class Image:
   def move_to(self, x: int, y: int) -> None:
     """Sets the x and y of the image"""
 
+    # Exception handling
+
+    if x < 0 or x > Calculator.width:
+      raise TypeError("x value must be within calculator bounds")
+      
+    if y < 0 or y > Calculator.height:
+      raise TypeError("y value must be within calculator bounds")
+
+    # Assign values
+    
     self.x = x
     self.y = y
 
   def move_center_to(self, x: int, y: int) -> None:
     """Sets the x and y of the center of the image"""
 
+    # Exception handling
+    
+    if x < 0 or x > Calculator.width:
+      raise TypeError("x value must be within calculator bounds")
+      
+    if y < 0 or y > Calculator.height:
+      raise TypeError("y value must be within calculator bounds")
+
+    # Assign values
+    
     self.x = x - self.width // 2
     self.y = y - self.height // 2
 
