@@ -118,6 +118,13 @@ face_up = False
 while True:
   if draw:
     draw = False
+    if Game.get_sum(game.player_hand) == 21:
+      while game.hit_or_stay():
+        game.hit_or_stay()
+      if Game.get_sum(game.dealer_hand) == 21:
+        win = "You tied!"
+      else:
+        win = True
     for idx, card in enumerate(game.dealer_hand):
       if idx == 0 and not face_up:
         card.draw((idx+1)*10 + Card.CARD_OUTSIDE_WIDTH*idx, 10, True)
@@ -134,8 +141,12 @@ while True:
       game.hit_or_stay()
     if Game.get_sum(game.dealer_hand) > 21:
       win = True
-    elif Game.get_sum(game.dealer_hand) >= Game.get_sum(game.player_hand):
+    elif Game.get_sum(game.dealer_hand) > Game.get_sum(game.player_hand):
       win = False
+    elif Game.get_sum(game.dealer_hand) == Game.get_sum(game.player_hand):
+      win = "You tied!"
+    else:
+      win = True
   elif ion.keydown(ion.KEY_UP) and not hitting:
     hitting = True
     if win is not None:
@@ -144,12 +155,17 @@ while True:
     game.hit()
     if Game.get_sum(game.player_hand) > 21:
       win = False
+    elif Game.get_sum(game.player_hand) == 21:
+      win = True
   if not ion.keydown(ion.KEY_UP):
     hitting = False
   if not draw and win is not None:
+    game.dealer_hand[0].draw(10, 10)
     break
 
-if win:
+if win is True:
   kandinsky.draw_string("You win!", 7, HEIGHT//2-12)
-else:
+elif win is False:
   kandinsky.draw_string("You lost!", 7, HEIGHT//2-12)
+else:
+  kandinsky.draw_string(win, 7, HEIGHT//2-12)
