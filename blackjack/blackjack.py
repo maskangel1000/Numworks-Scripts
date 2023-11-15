@@ -92,7 +92,10 @@ class Game:
       sum = 0
       for i in range(len(hand)):
         card = hand[i]
-        sum += card.value
+        if card.value == 11 or card.value == 12 or card.value == 13:
+          sum += 10
+        else:
+          sum += card.value
     return sum
 
   def print_deck(self) -> None:
