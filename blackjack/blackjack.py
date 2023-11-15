@@ -149,4 +149,7 @@ while True:
   if not draw and win is not None:
     break
 
-print(win)
+if win:
+  kandinsky.draw_string("You win!", 7, HEIGHT//2-12)
+else:
+  kandinsky.draw_string("You lost!", 7, HEIGHT//2-12)
