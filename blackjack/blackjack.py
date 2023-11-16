@@ -49,6 +49,22 @@ class Card:
         kandinsky.draw_string(self.get_value_str(), x+20, y+20, Card.CARD_OUTSIDE_COLOR)
       # kandinsky.draw_string(self.suit[0], x+20, y+Card.CARD_INSIDE_HEIGHT-30, Card.CARD_OUTSIDE_COLOR)
 
+  @staticmethod
+  def draw_diamonds(x: int, y: int):
+    raise NotImplementedError()
+    
+  @staticmethod
+  def draw_hearts(x: int, y: int):
+    raise NotImplementedError()
+    
+  @staticmethod
+  def draw_clubs(x: int, y: int):
+    raise NotImplementedError()
+    
+  @staticmethod
+  def draw_spades(x: int, y: int):
+    raise NotImplementedError()
+
 class Game:
   def __init__(self):
     self.deck = Game.generate_deck()
